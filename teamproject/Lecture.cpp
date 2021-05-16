@@ -11,8 +11,8 @@ Lecture::Lecture(const char* name, const char* lecturer, const char* room, int c
 {
 	for (int i = 0;i < MAXLIMITED;i++)
 	{
-		*student[i] = new char[10];
-		strcpy(*student[i], NULL);
+		student[i] = new char[10];
+		strcpy(student[i], "xxxxxxxxx");
 	}
 	this->lectureName = new char[strlen(name) + 1];
 	this->lecturer = new char[strlen(lecturer) + 1];
@@ -23,12 +23,12 @@ Lecture::Lecture(const char* name, const char* lecturer, const char* room, int c
 }
 
 Lecture::Lecture(Lecture& ref)
-	: lectureCode(ref.lectureCode), lectureTime(ref.lectureTime), limitedNum(ref.limitedNum)
+	: lectureCode(ref.lectureCode), lectureTime(ref.lectureTime), limitedNum(ref.limitedNum), studentCnt(ref.studentCnt)
 {
 	for (int i = 0;i < MAXLIMITED;i++)
 	{
-		*student[i] = new char[10];
-		strcpy(*student[i], ref.(*student[i]));
+		student[i] = new char[10];
+		strcpy(this->student[i], ref.student[i]);
 	}
 	this->lectureName = new char[strlen(ref.lectureName) + 1];
 	this->lecturer = new char[strlen(ref.lecturer) + 1];
@@ -91,7 +91,10 @@ void Lecture::AddStudent(char* studentId)
 		cout << "¼ö°­ÀÎ¿øÀÌ ²Ë Ã¡½À´Ï´Ù." << endl;
 		return;
 	}
-	*student[studentCnt] = studentId;
+	else
+	{
+		student[studentCnt++] = studentId;
+	}
 }
 
 void Lecture::LectureAllInfoPrint() const
@@ -110,7 +113,7 @@ Lecture::~Lecture()
 {
 	for (int i = 0;i < MAXLIMITED;i++)
 	{
-		delete[] *student[i];
+		delete[] student[i];
 	}
 	delete[]lectureName;
 	delete[]lecturer;

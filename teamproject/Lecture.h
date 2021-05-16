@@ -12,7 +12,7 @@ private:
 	int lectureCode;
 	int limitedNum;
 	int studentCnt;
-	(char*)* student[MAXLIMITED];
+	char* student[MAXLIMITED];
 	char* lectureName;
 	char* lecturer;
 	char* lectureRoom;
