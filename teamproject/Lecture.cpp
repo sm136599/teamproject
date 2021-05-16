@@ -93,7 +93,9 @@ void Lecture::AddStudent(char* studentId)
 	}
 	else
 	{
-		student[studentCnt++] = studentId;
+		delete[]student[studentCnt];
+		student[studentCnt] = new char[strlen(studentId) + 1];
+		strcpy(student[studentCnt], studentId);
 	}
 }
 
