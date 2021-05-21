@@ -1,4 +1,5 @@
 #define MAXLIMITED 200
+
 #include <iostream>
 #include <cstring>
 #include "Lecture.h"
@@ -11,8 +12,7 @@ Lecture::Lecture(const char* name, const char* lecturer, const char* room, int c
 {
 	for (int i = 0;i < MAXLIMITED;i++)
 	{
-		student[i] = new char[10];
-		strcpy(student[i], "xxxxxxxxx");
+		student[i] = 0;
 	}
 	this->lectureName = new char[strlen(name) + 1];
 	this->lecturer = new char[strlen(lecturer) + 1];
@@ -27,8 +27,7 @@ Lecture::Lecture(Lecture& ref)
 {
 	for (int i = 0;i < MAXLIMITED;i++)
 	{
-		student[i] = new char[10];
-		strcpy(this->student[i], ref.student[i]);
+		student[i] = ref.student[i];
 	}
 	this->lectureName = new char[strlen(ref.lectureName) + 1];
 	this->lecturer = new char[strlen(ref.lecturer) + 1];
@@ -84,7 +83,7 @@ void Lecture::ChangeLectureRoom(char* changedroom)
 	strcpy(this->lectureRoom, changedroom);
 }
 
-void Lecture::AddStudent(char* studentId)
+void Lecture::AddStudent(int studentId)
 {
 	if (studentCnt >= limitedNum)
 	{
@@ -93,9 +92,7 @@ void Lecture::AddStudent(char* studentId)
 	}
 	else
 	{
-		delete[]student[studentCnt];
-		student[studentCnt] = new char[strlen(studentId) + 1];
-		strcpy(student[studentCnt], studentId);
+		student[studentCnt++] = studentId;
 	}
 }
 
@@ -113,10 +110,6 @@ void Lecture::LectureAllInfoPrint() const
 
 Lecture::~Lecture()
 {
-	for (int i = 0;i < MAXLIMITED;i++)
-	{
-		delete[] student[i];
-	}
 	delete[]lectureName;
 	delete[]lecturer;
 	delete[]lectureRoom;

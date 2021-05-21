@@ -8,14 +8,14 @@
 class Lecture
 {
 private:
-	double lectureTime;
-	int lectureCode;
-	int limitedNum;
-	int studentCnt;
-	char* student[MAXLIMITED];
-	char* lectureName;
-	char* lecturer;
-	char* lectureRoom;
+	double lectureTime;				// 강의시간
+	int lectureCode;				// 강의코드
+	int limitedNum;					// 제한인원	
+	int studentCnt;					// 학생 수
+	int student[MAXLIMITED];		// 학생ID   
+	char* lectureName;				// 강의이름
+	char* lecturer;					// 담당교수명
+	char* lectureRoom;				// 강의실
 public:
 	Lecture(const char* name, const char* lecturer, const char* room, int code, double time, int limited);
 	Lecture(Lecture& ref);
@@ -28,7 +28,7 @@ public:
 	void ChangeLectureName(char* changedname);
 	void ChangeLecturer(char* changedlecturer);
 	void ChangeLectureRoom(char* changedroom);
-	void AddStudent(char* studentId);
+	void AddStudent(int studentId);
 	void LectureAllInfoPrint() const;
 	~Lecture();
 };
