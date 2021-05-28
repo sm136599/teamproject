@@ -13,7 +13,7 @@ void ChangeLectureInfo(user& prof, UserHandler& userhdl, LectureHandler& lecture
 	Lecture* changedLecture;
 	lecturehdl.showLectureByProfName(prof.get_name());
 	cout << "------------------------------------------------" << endl;
-	cout << "바꿀강의의 강의코를 입력하세요." << endl;
+	cout << "바꿀강의의 강의 코드를 입력하세요." << endl;
 	cout << "강의 코드: ";
 	cin >> lecturecode;
 	
