@@ -103,7 +103,7 @@ bool Lecture::AddStudent(int studentId)
 {
 	if (studentCnt >= limitedNum)
 	{
-		cout << "¼ö°­ÀÎ¿øÀÌ ²Ë Ã¡½À´Ï´Ù." << endl;
+		cout << "ìˆ˜ê°•ì¸ì›ì´ ê½‰ ì°¼ìŠµë‹ˆë‹¤." << endl;
 		return false;
 	}
 	else
@@ -116,12 +116,12 @@ bool Lecture::AddStudent(int studentId)
 void Lecture::LectureAllInfoPrint() const
 {
 	cout << "--------------------------" << endl;
-	cout << "°­ÀÇÄÚµå: " << lectureCode << endl;
-	cout << "°­ÀÇ¸í: " << lectureName << endl;
-	cout << "°­ÀÇ½Ã°£: " << lectureTime << endl;
-	cout << "Á¦ÇÑÀÎ¿ø: " << studentCnt << "/" << limitedNum << endl;
-	cout << "±³¼ö¸í: " << lecturer << endl;
-	cout << "°­ÀÇ½Ç: " << lectureRoom << endl;
+	cout << "ê°•ì˜ì½”ë“œ: " << lectureCode << endl;
+	cout << "ê°•ì˜ëª…: " << lectureName << endl;
+	cout << "ê°•ì˜ì‹œê°„: " << lectureTime << endl;
+	cout << "ì œí•œì¸ì›: " << studentCnt << "/" << limitedNum << endl;
+	cout << "êµìˆ˜ëª…: " << lecturer << endl;
+	cout << "ê°•ì˜ì‹¤: " << lectureRoom << endl;
 	cout << "--------------------------" << endl;
 }
 
@@ -130,4 +130,5 @@ Lecture::~Lecture()
 	delete[]lectureName;
 	delete[]lecturer;
 	delete[]lectureRoom;
+	delete[]lectureTime;
 }
