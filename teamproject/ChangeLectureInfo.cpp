@@ -14,30 +14,32 @@ void ChangeLectureInfo(user& prof, UserHandler& userhdl, LectureHandler& lecture
 	int choice;
 	Lecture* changedLecture;
 
-	while(1)
+	do
 	{
-		cout << "------------------------------------------------" << endl;
-		cout << "1. °­ÀÇ ¸ñ·Ï Ãâ·Â" << endl;
-		cout << "2. °­ÀÇ Á¤º¸ º¯°æ" << endl;
-		cout << "3. µÚ·Î °¡±â" << endl;
-		cout << "¼±ÅÃ: ";
+		cout << "-------------------" << endl;
+		cout << "1. ê°•ì˜ ëª©ë¡ ì¶œë ¥" << endl;
+		cout << "2. ê°•ì˜ ì •ë³´ ë³€ê²½" << endl;
+		cout << "3. ë’¤ë¡œ ê°€ê¸°" << endl;
+		cout << "ì„ íƒ: ";
 		cin >> choice;
 		switch (choice)
 		{
 		case PRINTLECTURELIST:
+			system("cls");
 			lecturehdl.showLectureByProfName(prof.get_name());
 			break;
 		case CHANGELECTUREINFO:
-			cout << "------------------------------------------------" << endl;
-			cout << "¹Ù²Ü°­ÀÇÀÇ °­ÀÇ ÄÚµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä." << endl;
-			cout << "°­ÀÇ ÄÚµå: ";
+			cout << "------------------------------------" << endl;
+			cout << "ë°”ê¿€ê°•ì˜ì˜ ê°•ì˜ ì½”ë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”." << endl;
+			cout << "ê°•ì˜ ì½”ë“œ: ";
 			cin >> lecturecode;
 
+			system("cls");
 			try
 			{
-				if (lecturecode <= 0 || (lecturecode > lecturehdl.getLectureCount()))	// lecturecode¿¡ À½¼ö, °³¼³µÈ °­ÀÇ ¼öº¸´Ù ¸¹Àº ¼ö, ¹®ÀÚ, Æ¯¼ö¹®ÀÚ °¡ ÀÔ·ÂµÇ¸é false
+				if (lecturecode <= 0 || (lecturecode > lecturehdl.getLectureCount()))	// lecturecodeì— ìŒìˆ˜, ê°œì„¤ëœ ê°•ì˜ ìˆ˜ë³´ë‹¤ ë§ì€ ìˆ˜, ë¬¸ì, íŠ¹ìˆ˜ë¬¸ì ê°€ ì…ë ¥ë˜ë©´ false
 					throw lecturecode;
-				else if (strcmp(prof.get_name(), lecturehdl.findLecture(lecturecode)->GetLecturer()))	// ÀÚ±â ÀÚ½ÅÀÇ °­ÀÇ¸¸ º¯°æÇÏ±â À§ÇÑ °Ë»ç
+				else if (strcmp(prof.get_name(), lecturehdl.findLecture(lecturecode)->GetLecturer()))	// ìê¸° ìì‹ ì˜ ê°•ì˜ë§Œ ë³€ê²½í•˜ê¸° ìœ„í•œ ê²€ì‚¬
 					throw prof.get_name();
 
 				changedLecture = lecturehdl.findLecture(lecturecode);
@@ -45,18 +47,18 @@ void ChangeLectureInfo(user& prof, UserHandler& userhdl, LectureHandler& lecture
 			}
 			catch (int nlecturecode)
 			{
-				cout << "Àß¸øµÈ °­ÀÇ ÄÚµå ÀÔ´Ï´Ù." << endl;
+				cout << "ì˜ëª»ëœ ê°•ì˜ ì½”ë“œ ì…ë‹ˆë‹¤." << endl;
 			}
 			catch (char* profname)
 			{
-				cout << "ÀÚ½ÅÀÇ °­ÀÇ¸¸ º¯°æÇÒ ¼ö ÀÖ½À´Ï´Ù." << endl;
+				cout << "ìì‹ ì˜ ê°•ì˜ë§Œ ë³€ê²½í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤." << endl;
 			}
 			break;
 		case BACK:
-			exit(0);
+			break;
 		default:
-			cout << "Àß¸øµÈ ¼±ÅÃÀÔ´Ï´Ù." << endl;
+			cout << "ì˜ëª»ëœ ì„ íƒì…ë‹ˆë‹¤." << endl;
 			break;
 		}
-	}
+	} while (choice != BACK);
 }
