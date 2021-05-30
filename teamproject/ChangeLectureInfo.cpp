@@ -14,7 +14,7 @@ void ChangeLectureInfo(user& prof, UserHandler& userhdl, LectureHandler& lecture
 	int choice;
 	Lecture* changedLecture;
 
-	do
+	while(1)
 	{
 		cout << "------------------------------------------------" << endl;
 		cout << "1. 강의 목록 출력" << endl;
@@ -53,10 +53,10 @@ void ChangeLectureInfo(user& prof, UserHandler& userhdl, LectureHandler& lecture
 			}
 			break;
 		case BACK:
-			break;
+			exit(0);
 		default:
 			cout << "잘못된 선택입니다." << endl;
 			break;
 		}
-	} while (choice != BACK);
+	}
 }
